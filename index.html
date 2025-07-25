@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контент-план для фитнес-тренера | Август 2025</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .calendar-section {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+        
+        tbody tr:hover {
+            background-color: #f8fbff;
+        }
+        
+        td {
+            padding: 16px 15px;
+            vertical-align: top;
+        }
+        
+        .date-cell {
+            font-weight: 700;
+            color: var(--secondary);
+            min-width: 100px;
+        }
+        
+        .hashtag {
+            display: inline-block;
+            background: #eef7ff;
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 3px 3px 3px 0;
+        }
+        
+        .funnel {
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .funnel-1 { background: #e3f2fd; color: #1565c0; }
+        .funnel-2 { background: #e8f5e9; color: #2e7d32; }
+        .funnel-3 { background: #fff8e1; color: #f57f17; }
+        
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .recommendations {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .rec-card {
+            background: #f8fbff;
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .rec-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rec-card h3::before {
+            content: "•";
+            color: var(--accent);
+            font-size: 2rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            table thead {
+                display: none;
+            }
+            
+            table, table tbody, table tr, table td {
+                display: block;
+                width: 100%;
+            }
+            
+            table tr {
+                margin-bottom: 25px;
+                border: 1px solid #eee;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            
+            table td {
+                padding: 12px;
+                border-bottom: 1px solid #eee;
+            }
+            
+            table td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                color: var(--primary);
+                margin-right: 10px;
+            }
+            
+            .date-cell {
+                background: var(--primary);
+                color: white;
+                font-size: 1.2rem;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>КОНТЕНТ-ПЛАН</h1>
+            <p class="subtitle">Август 2025 • Рилы раз в 2 дня • Личный сторителлинг • Воронка продаж • Привязка к праздникам</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>КОЛИЧЕСТВО РИЛОВ</h3>
+                <div class="value">16</div>
+            </div>
+            <div class="stat-card">
+                <h3>КЛЮЧЕВЫХ ПРАЗДНИКОВ</h3>
+                <div class="value">4</div>
+            </div>
+            <div class="stat-card">
+                <h3>ЭТАПЫ ВОРОНКИ</h3>
+                <div class="value">3</div>
+            </div>
+            <div class="stat-card">
+                <h3>ЭПИЗОДОВ "СЕРИАЛА"</h3>
+                <div class="value">7</div>
+            </div>
+        </div>
+
+        <div class="calendar-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Тема Рила</th>
+                        <th>Формат/Идея</th>
+                        <th>Воронка</th>
+                        <th>Личный "Сериал"</th>
+                        <th>Праздник/Тренд</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="date-cell">1 ЧТ</td>
+                        <td>Старт! Знакомство: "Я ваш новый тренер"</td>
+                        <td>Динамичное видео: философия фитнеса, почему люблю это</td>
+                        <td><span class="funnel funnel-1">Знакомство</span></td>
+                        <td>Эпизод 1: "Почему я стал тренером?"</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">3 СБ</td>
+                        <td>День Арбуза: Смузи для восстановления</td>
+                        <td>Быстрый рецепт полезного смузи после тренировки</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Мой пост-тренировочный ритуал</td>
+                        <td><span class="highlight">День Арбуза</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">5 ПН</td>
+                        <td>5-мин Микро-HIIT: Заряд на весь день</td>
+                        <td>Супер-короткая утренняя зарядка с таймером</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Как я начинаю свой день</td>
+                        <td><span class="highlight">Микро-HIIT</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">7 СР</td>
+                        <td>Ошибка всех новичков: Присед (и как исправить)</td>
+                        <td>Сравнение: неправильно vs правильно</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Эпизод 2: "Моя первая ошибка в зале"</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">9 ПТ</td>
+                        <td>Функционально: Как легко нести тяжелые сумки?</td>
+                        <td>3 упражнения на укрепление кора и спины для быта</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Как я ношу сумки правильно</td>
+                        <td><span class="highlight">Функциональный тренинг</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">11 ВС</td>
+                        <td>Мотивация: Мой первый клиент (История успеха)</td>
+                        <td>Интервью с клиентом + прогресс (с разрешения)</td>
+                        <td><span class="funnel funnel-2">Прогрев</span></td>
+                        <td>Эпизод 3: "Волновался перед первой тренировкой"</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">13 ВТ</td>
+                        <td>Нейроатлетика: Простая координация "Мозг & Тело"</td>
+                        <td>Упражнение "касание плеча в планке" + счет</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Мой результат теста на координацию</td>
+                        <td><span class="highlight">Нейроатлетика</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">14 ЧТ</td>
+                        <td>День Физкультурника: Твой Спорт = Твоя Сила!</td>
+                        <td>Мотивационный рилс с кадрами активных людей</td>
+                        <td><span class="funnel funnel-1">Мотивация</span></td>
+                        <td>Эпизод 4: "Как спорт изменил мою жизнь"</td>
+                        <td><span class="highlight">День Физкультурника</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">16 СБ</td>
+                        <td>Ответ на возражение: "Нет времени на тренировки"</td>
+                        <td>3 варианта микро-тренировок (5-7-10 мин)</td>
+                        <td><span class="funnel funnel-2">Прогрев</span></td>
+                        <td>Как я нахожу время в загруженный день</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">18 ПН</td>
+                        <td>Растяжка вечером = Спокойный сон</td>
+                        <td>Простые позы на растяжку перед сном</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Мой вечерний ритуал для расслабления</td>
+                        <td><span class="highlight">Фитнес для ментального здоровья</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">19 СР</td>
+                        <td>Всемирный День Фото: Топ-3 "До/После"</td>
+                        <td>Презентация реальных результатов клиентов</td>
+                        <td><span class="funnel funnel-2">Прогрев</span></td>
+                        <td>Эпизод 5: "Как я радуюсь успехам клиентов"</td>
+                        <td><span class="highlight">Всемирный День Фото</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">21 ПТ</td>
+                        <td>ИИ vs Тренер: Кто нужен?</td>
+                        <td>Как ИИ помогает тренеру в анализе данных</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Как я использую фитнес-трекер</td>
+                        <td><span class="highlight">AI в фитнесе</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">23 ВС</td>
+                        <td>Анонс: Бесплатный Марафон "Старт к Силе"</td>
+                        <td>Зажигательный анонс (даты, темы, польза)</td>
+                        <td><span class="funnel funnel-3">Продажа</span></td>
+                        <td>Эпизод 6: "Почему я решил сделать марафон"</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">25 ВТ</td>
+                        <td>Мотивация: Твой прогресс за 3 недели!</td>
+                        <td>Подведение итогов по челленджам, благодарность</td>
+                        <td><span class="funnel funnel-1">Мотивация</span></td>
+                        <td>Мой личный мини-прогресс за август</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">27 ЧТ</td>
+                        <td>Упражнение для офиса: Снять боль в шее</td>
+                        <td>Движения для рабочего места (2 минуты)</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Как я спасаюсь от офисной скованности</td>
+                        <td><span class="highlight">Функциональный тренинг</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">29 СБ</td>
+                        <td>День Фитнес-Браслета: Как читать данные?</td>
+                        <td>Разбор показателей: пульс, шаги, сон</td>
+                        <td><span class="funnel funnel-1">Ценность</span></td>
+                        <td>Мой любимый показатель в трекере</td>
+                        <td><span class="highlight">День фитнес-браслета</span></td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">31 ПН</td>
+                        <td>Итоги Августа & Спецпредложение!</td>
+                        <td>ОФФЕР: Скидка на первый месяц тренировок</td>
+                        <td><span class="funnel funnel-3">Продажа</span></td>
+                        <td>Эпизод 7: "Что август научил меня как тренера"</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="recommendations">
+            <h2 class="section-title">Ключевые рекомендации по реализации</h2>
+            <div class="rec-grid">
+                <div class="rec-card">
+                    <h3>Визуал и музыка</h3>
+                    <p>Яркие динамичные кадры для тренировок, спокойные тона для растяжки. Актуальная трендовая музыка + текстовые субтитры во всех рилсах</p>
+                </div>
+                <div class="rec-card">
+                    <h3>Сторисы для вовлечения</h3>
+                    <p>Анонсы рилов, закулисье "сериала", интерактивы (опросы, вопросы), ответы на сообщения, напоминания о предложениях</p>
+                </div>
+                <div class="rec-card">
+                    <h3>Лид-магниты</h3>
+                    <p>Бесплатные PDF: "5 утренних привычек", "Чек-лист техники базовых упражнений", "Меню на 3 дня для новичков"</p>
+                </div>
+                <div class="rec-card">
+                    <h3>Продающие посты</h3>
+                    <p>1-2 поста в ленту в конце месяца с детальным описанием предложения, яркими фото/видео и четким CTA</p>
+                </div>
+                <div class="rec-card">
+                    <h3>Аналитика</h3>
+                    <p>Отслеживание охватов, вовлеченности, переходов. Адаптация плана под реакцию аудитории</p>
+                </div>
+                <div class="rec-card">
+                    <h3>Хэштеги</h3>
+                    <p>Использовать смесь: общие (#фитнес), локальные (#фитнестренермосква), тематические (#нейроатлетика), личные бренда (#ИванФитнес)</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Контент-план разработан с учетом праздников августа 2025, современных трендов и воронки продаж</p>
+            <p>© 2025 Стратегия продвижения для фитнес-тренера</p>
+        </footer>
+    </div>
+
+    <script>
+        // Добавляем адаптивность таблице для мобильных устройств
+        document.addEventListener('DOMContentLoaded', function() {
+            const cells = document.querySelectorAll('td');
+            const headings = document.querySelectorAll('th');
+            const rows = document.querySelectorAll('tr');
+            
+            if (window.innerWidth < 768) {
+                rows.forEach((row, index) => {
+                    if (index !== 0) { // Пропускаем заголовок
+                        const tds = row.querySelectorAll('td');
+                        tds.forEach((td, i) => {
+                            td.setAttribute('data-label', headings[i].textContent);
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
