@@ -122,8 +122,8 @@
         
         .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr); /* Всегда 3 колонки */
+            gap: 15px; /* Уменьшаем отступы */
             margin-top: 20px;
         }
         
@@ -133,6 +133,7 @@
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1/1; /* Квадратные карточки как в Instagram */
         }
         
         .post-card:hover {
@@ -141,7 +142,7 @@
         }
         
         .post-image {
-            height: 280px;
+            height: 100%;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -150,10 +151,10 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Уменьшаем размер текста */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
         
         .post-date {
@@ -164,11 +165,11 @@
             color: white;
             padding: 5px 10px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Уменьшаем размер даты */
         }
         
         .post-content {
-            padding: 15px;
+            display: none; /* Скрываем текстовый контент */
         }
         
         .post-title {
@@ -184,44 +185,26 @@
             line-height: 1.5;
         }
         
-        .post-hashtags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        
-        .hashtag {
-            background: #efefef;
-            color: #385185;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        /* Убираем стили для хештегов */
+        .post-hashtags, .hashtag {
+            display: none;
         }
         
         .funnel {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 5px;
+            display: none; /* Скрываем воронку */
         }
-        
-        .funnel-1 { background: #e0f7fa; color: #00838f; }
-        .funnel-2 { background: #f1f8e9; color: #689f38; }
-        .funnel-3 { background: #ffecb3; color: #ff8f00; }
         
         .trend-badge {
             display: inline-block;
             background: linear-gradient(45deg, #833ab4, #fd1d1d);
             color: white;
-            padding: 3px 10px;
+            padding: 3px 8px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            margin-left: 5px;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
         }
         
         /* Статистика */
@@ -278,6 +261,13 @@
             margin-top: 20px;
         }
         
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .calendar-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+            }
+        }
+        
         @media (max-width: 768px) {
             .profile-header {
                 flex-direction: column;
@@ -295,7 +285,32 @@
             }
             
             .calendar-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr); /* 3 колонки на мобильных */
+            }
+            
+            .post-image {
+                font-size: 0.9rem; /* Еще уменьшаем текст на мобильных */
+            }
+            
+            .post-date {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .calendar-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на маленьких экранах */
+            }
+            
+            .post-image {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+            
+            .trend-badge {
+                font-size: 0.6rem;
+                padding: 2px 6px;
             }
         }
     </style>
@@ -344,19 +359,6 @@
                         <span class="post-date">1 Августа, ЧТ</span>
                         Старт! Знакомство: "Я ваш новый тренер"
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Знакомство с Адамом</div>
-                        <div class="post-details">
-                            Динамичное видео: философия фитнеса, почему люблю это
-                            <div class="funnel funnel-1">Знакомство</div>
-                            <div>Эпизод 1: "Почему я стал тренером?"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#ФитнесТренер</span>
-                            <span class="hashtag">#Знакомство</span>
-                            <span class="hashtag">#Старт</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 2 -->
@@ -365,19 +367,6 @@
                         <span class="post-date">3 Августа, СБ</span>
                         День Арбуза: Смузи для восстановления
                         <span class="trend-badge">День Арбуза</span>
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Летний смузи</div>
-                        <div class="post-details">
-                            Быстрый рецепт полезного смузи после тренировки
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Мой пост-тренировочный ритуал</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#ДеньАрбуза</span>
-                            <span class="hashtag">#ЗдоровоеПитание</span>
-                            <span class="hashtag">#Рецепты</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -388,19 +377,6 @@
                         5-мин Микро-HIIT: Заряд на весь день
                         <span class="trend-badge">Тренд: Микро-HIIT</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Энергичное утро</div>
-                        <div class="post-details">
-                            Супер-короткая утренняя зарядка с таймером
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Как я начинаю свой день</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#УтренняяЗарядка</span>
-                            <span class="hashtag">#HIIT</span>
-                            <span class="hashtag">#Энергия</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 4 (7 августа) -->
@@ -408,20 +384,6 @@
                     <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/f7/04/f5/f704f55bd04ab2d8806d3c2b06cc711f.jpg');">
                         <span class="post-date">7 Августа, ЧТ</span>
                         Ошибка новичков: Присед
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Техника приседа</div>
-                        <div class="post-details">
-                            Сравнение правильной и неправильной техники приседа
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Эпизод 2: "Моя первая ошибка в зале"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#присед</span>
-                            <span class="hashtag">#техника</span>
-                            <span class="hashtag">#новичок</span>
-                            <span class="hashtag">#фитнес</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -432,19 +394,6 @@
                         Как нести тяжелые сумки
                         <span class="trend-badge">Функциональный тренинг</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Бытовая сила</div>
-                        <div class="post-details">
-                            2 упражнения для укрепления спины и кора
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Как я ношу покупки без боли в спине</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#функциональныйтренинг</span>
-                            <span class="hashtag">#спина</span>
-                            <span class="hashtag">#здоровье</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 6 (11 августа) -->
@@ -452,19 +401,6 @@
                     <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/71/a8/75/71a87582007453ed453ffc44f79efc46.jpg');">
                         <span class="post-date">11 Августа, ПН</span>
                         Мой первый клиент
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">История успеха</div>
-                        <div class="post-details">
-                            История клиента с прогрессом "до/после"
-                            <div class="funnel funnel-2">Прогрев</div>
-                            <div>Эпизод 3: "Мое волнение перед первой тренировкой"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#историяуспеха</span>
-                            <span class="hashtag">#доипосле</span>
-                            <span class="hashtag">#мотивация</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -475,19 +411,6 @@
                         Координация "Мозг & Тело"
                         <span class="trend-badge">Нейроатлетика</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Баланс и мозг</div>
-                        <div class="post-details">
-                            Упражнение на баланс с закрытыми глазами
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Мой рекорд баланса: 45 секунд!</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#нейроатлетика</span>
-                            <span class="hashtag">#баланс</span>
-                            <span class="hashtag">#мозгитело</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 8 (15 августа) -->
@@ -497,19 +420,6 @@
                         День Физкультурника
                         <span class="trend-badge">Праздник</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Твой Спорт = Твоя Сила!</div>
-                        <div class="post-details">
-                            Мотивационный ролик с разными видами активности
-                            <div class="funnel funnel-1">Мотивация</div>
-                            <div>Эпизод 4: "Как спорт изменил мою жизнь"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#деньфизкультурника</span>
-                            <span class="hashtag">#спорт</span>
-                            <span class="hashtag">#мотивация</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 9 (17 августа) -->
@@ -517,19 +427,6 @@
                     <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/c4/a6/ea/c4a6eaeb568e6f0085228736fe126191.jpg');">
                         <span class="post-date">17 Августа, ВС</span>
                         Нет времени на тренировки?
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Микро-тренировки</div>
-                        <div class="post-details">
-                            3 варианта тренировок по 5-10 минут
-                            <div class="funnel funnel-2">Прогрев</div>
-                            <div>Как я нахожу время в загруженный день</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#микротренировка</span>
-                            <span class="hashtag">#нетвремени</span>
-                            <span class="hashtag">#фитнес</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -540,19 +437,6 @@
                         Топ-3 "До/После"
                         <span class="trend-badge">День Фото</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Результаты клиентов</div>
-                        <div class="post-details">
-                            Презентация лучших трансформаций
-                            <div class="funnel funnel-2">Прогрев</div>
-                            <div>Эпизод 5: "Как я радуюсь успехам клиентов"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#доипосле</span>
-                            <span class="hashtag">#результаты</span>
-                            <span class="hashtag">#деньфото</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 11 (21 августа) -->
@@ -562,19 +446,6 @@
                         ИИ vs Тренер
                         <span class="trend-badge">AI в фитнесе</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Технологии в фитнесе</div>
-                        <div class="post-details">
-                            Как ИИ помогает в анализе данных
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Как я использую фитнес-трекер</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#фитнестехнологии</span>
-                            <span class="hashtag">#ии</span>
-                            <span class="hashtag">#тренер</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 12 (23 августа) -->
@@ -582,19 +453,6 @@
                     <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/fd/7c/82/fd7c82337d855325804ae9dd0b8a9cc7.jpg');">
                         <span class="post-date">23 Августа, СБ</span>
                         Марафон "Старт к Силе"
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Бесплатный марафон</div>
-                        <div class="post-details">
-                            Анонс 3-дневного фитнес-марафона
-                            <div class="funnel funnel-3">Продажа</div>
-                            <div>Эпизод 6: "Почему я решил сделать марафон"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#марафон</span>
-                            <span class="hashtag">#бесплатно</span>
-                            <span class="hashtag">#стартксиле</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -604,19 +462,6 @@
                         <span class="post-date">25 Августа, ПН</span>
                         Твой прогресс за 3 недели!
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Итоги месяца</div>
-                        <div class="post-details">
-                            Подведение итогов по челленджам
-                            <div class="funnel funnel-1">Мотивация</div>
-                            <div>Мой прогресс: +5 кг в жиме!</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#прогресс</span>
-                            <span class="hashtag">#итоги</span>
-                            <span class="hashtag">#мотивация</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 14 (27 августа) -->
@@ -624,19 +469,6 @@
                     <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/1e/af/17/1eaf175590dc7517992c995b17fd97fa.jpg');">
                         <span class="post-date">27 Августа, СР</span>
                         Упражнение для офиса
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Снять боль в шее</div>
-                        <div class="post-details">
-                            3 простых упражнения для рабочего места
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Как я спасаюсь от офисной скованности</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#офисныйфитнес</span>
-                            <span class="hashtag">#шея</span>
-                            <span class="hashtag">#здоровье</span>
-                        </div>
                     </div>
                 </div>
                 
@@ -647,19 +479,6 @@
                         Как читать данные фитнес-браслета
                         <span class="trend-badge">День браслета</span>
                     </div>
-                    <div class="post-content">
-                        <div class="post-title">Фитнес-гаджеты</div>
-                        <div class="post-details">
-                            Разбор показателей: пульс, шаги, сон
-                            <div class="funnel funnel-1">Ценность</div>
-                            <div>Мой любимый показатель - качество сна</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#фитнесбраслет</span>
-                            <span class="hashtag">#гаджеты</span>
-                            <span class="hashtag">#анализ</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <!-- Пост 16 (31 августа) -->
@@ -667,19 +486,6 @@
                     <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.pinimg.com/736x/de/f9/68/def96887378248433c16906a10d16dd9.jpg');">
                         <span class="post-date">31 Августа, ВС</span>
                         Итоги Августа
-                    </div>
-                    <div class="post-content">
-                        <div class="post-title">Спецпредложение!</div>
-                        <div class="post-details">
-                            Итоги месяца и специальное предложение
-                            <div class="funnel funnel-3">Продажа</div>
-                            <div>Эпизод 7: "Что август научил меня"</div>
-                        </div>
-                        <div class="post-hashtags">
-                            <span class="hashtag">#итоги</span>
-                            <span class="hashtag">#спецпредложение</span>
-                            <span class="hashtag">#скидка</span>
-                        </div>
                     </div>
                 </div>
             </div>
